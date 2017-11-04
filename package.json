@@ -5,18 +5,19 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Patrick Kiely",
   "license": "ISC",
   "dependencies": {
+    "boom": "^7.1.1",
     "handlebars": "^4.0.10",
     "hapi": "^16.6.2",
     "hapi-auth-cookie": "^7.0.0",
     "inert": "^4.2.1",
     "joi": "^13.0.1",
     "mongoose": "^4.12.6",
+    "mongoose-seeder": "^1.2.1",
     "vision": "^4.1.1"
   }
 }
