@@ -8,6 +8,8 @@ if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
 }
 
+//var dbURI = 'mongodb://tweeter:tweeter@ds249025.mlab.com:49025/mytweet';
+
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
