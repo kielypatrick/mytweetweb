@@ -1,0 +1,51 @@
+<section class="ui raised segment">
+  <div class="ui grid ">
+    <div class="ui form  column">
+      <div class="ui stacked segment">
+        <form action="/tweet" method="POST">
+          <div>
+            <h3> What's going on?</h3>
+            <div class="field">
+              <textarea class="tweet" name="body" maxlength="167" wrap="soft" overflow="auto">
+
+              </textarea>
+              <input id="date" name="date">
+
+              <script type="text/javascript">
+                document.getElementById('date').value = new Date();
+              </script>
+
+              <span class="countdown"></span>
+
+
+
+
+              <p>  </p>
+            </div>
+          </div>
+
+
+
+          <button class="ui blue submit button">Tweet</button>
+        </form>
+        {{> formerror }}
+      </div>
+
+      <!-- https://stackoverflow.com/questions/2136647/character-countdown-like-on-twitter -->
+      <script>
+        function updateCountdown() {
+          let remaining = 167 - jQuery('.tweet').val().length;
+          jQuery('.countdown').text(remaining + ' characters remaining.')
+        }
+        jQuery(document).ready(function($) {
+          updateCountdown();
+          $('.tweet').change(updateCountdown);
+          $('.tweet').keyup(updateCountdown);
+        });
+      </script>
+
+
+    </div>
+
+  </div>
+</section>

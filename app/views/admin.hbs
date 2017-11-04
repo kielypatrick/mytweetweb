@@ -1,0 +1,19 @@
+{{> adminmenu _id="report" }}
+
+
+<section class="ui stacked segment">
+  <h1>Hi {{user.firstName}} !!</h1>
+
+  <div class="ui grid">
+    <aside class="six wide column">
+      {{> tweet }}
+      <a href="/viewusers" >
+        <button class="ui green submit button"> View Users </button>
+      </a>
+    </aside>
+    <div class="ui ten wide column">
+      {{> mytweetlist }}
+    </div>
+  </div>
+
+</section>

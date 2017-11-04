@@ -1,0 +1,36 @@
+<section class="ui raised segment">
+  <div>
+
+
+      <h2>Newsfeed</h2>
+      {{#each tweets}}
+
+      <table class="ui celled table segment" style="table-layout: fixed">
+        <thead>
+          <h3>    <a href="/membertimeline/{{author.id}}"> {{author.firstName}} {{author.lastName}} </a>
+
+          </h3>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td style="word-wrap: break-word"> {{body}}
+            </td>
+          </tr>
+          <tr>
+            <td> {{date}} </td>
+
+
+
+          </tr>
+
+
+        {{/each}}
+
+
+        </tbody>
+        
+      </table>
+
+  </div>
+</section>

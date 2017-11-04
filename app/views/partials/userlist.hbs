@@ -1,0 +1,13 @@
+<h2>Users</h2>
+{{#each users}}
+
+  <h3> <a href = "/membertimeline/{{author.id}}" > {{firstName}} {{lastName}} </a>
+    <button class="ui red icon button" id="user{{userId}}" style="float: right;"
+            onclick="window.location='/users/{{id}}/deleteUser'"><i class="trash icon"></i></button>
+
+
+
+
+  </h3>
+
+{{/each}}

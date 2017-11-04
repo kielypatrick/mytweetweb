@@ -1,0 +1,15 @@
+{{> mainmenu _id="report" }}
+
+
+<section class="ui stacked segment">
+  <h1>Hi {{user.firstName}} !!</h1>
+
+  <div class="ui grid">
+    <aside class="six wide column">
+      {{> tweet }}
+    </aside>
+    <div class="ui ten wide column">
+      {{> tweetlist }}
+    </div>
+  </div>
+</section>

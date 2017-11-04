@@ -1,0 +1,37 @@
+<section class="ui raised segment">
+  <div>
+
+
+    <h2>My Tweets</h2>
+    {{#each tweets}}
+
+    <table class="ui celled table segment" style="table-layout: fixed">
+      <thead>
+      <h3>    <a href="/membertimeline/{{author.id}}"> {{author.firstName}} {{author.lastName}} </a>
+
+      </h3>
+      </thead>
+    <tbody>
+
+    <tr>
+      <td style="word-wrap: break-word"> {{body}}
+        <button class="ui red icon button" id="tweet{{tweetid}}" style="float: right;" onclick="window.location='/tweets/{{id}}/deleteTweet'"><i class="trash icon"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <td> {{date}} </td>
+
+
+
+    </tr>
+
+
+    {{/each}}
+
+
+  </tbody>
+
+  </table>
+
+  </div>
+</section>

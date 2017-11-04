@@ -1,0 +1,20 @@
+{
+  "name": "mytweetweb",
+  "version": "1.0.0",
+  "description": "a web based app to allow users to post tweets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Kiely",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.10",
+    "hapi": "^16.6.2",
+    "hapi-auth-cookie": "^7.0.0",
+    "inert": "^4.2.1",
+    "joi": "^13.0.1",
+    "mongoose": "^4.12.6",
+    "vision": "^4.1.1"
+  }
+}
