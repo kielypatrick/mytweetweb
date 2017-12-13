@@ -12,6 +12,7 @@
   "dependencies": {
     "boom": "^7.1.1",
     "handlebars": "^4.0.10",
+    "handlebars-dateformat": "^1.1.1",
     "hapi": "^16.6.2",
     "hapi-auth-cookie": "^7.0.0",
     "inert": "^4.2.1",
@@ -19,5 +20,10 @@
     "mongoose": "^4.12.6",
     "mongoose-seeder": "^1.2.1",
     "vision": "^4.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "sync-request": "^4.1.0"
   }
 }

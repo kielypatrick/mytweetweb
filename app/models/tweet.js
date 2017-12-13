@@ -4,10 +4,11 @@ const mongoose = require('mongoose');
 
 const tweetSchema = mongoose.Schema({
   body: String,
-  length: Number,
+ // length: Number,
   date: {
-    type: String,
-    ref: new Date().getDate(),
+    type: Number,
+    ref: new Date().getTime(),
+
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,

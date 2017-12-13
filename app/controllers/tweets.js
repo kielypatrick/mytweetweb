@@ -5,6 +5,7 @@ const Joi = require('joi');
 
 
 
+
 exports.newsfeed = {
 
   handler: function (request, reply) {
@@ -13,7 +14,7 @@ exports.newsfeed = {
     User.findOne({ email: userEmail }).then(foundUser => {
 
     Tweet.find({}).populate('author').populate('user').then(allTweets => {
-
+      
       // let timeline = [];
       // allTweets.forEach(tweet => {
       //   timeline.push(tweet)
@@ -36,7 +37,7 @@ exports.tweet = {
 
     payload: {
 
-      body: Joi.string().min(29).required(),
+      body: Joi.string().min(2).required(),
       date: Joi.string().required(),
     },
 
@@ -63,7 +64,7 @@ exports.tweet = {
       else {
         reply.redirect('/newsfeed');
       }
-      console.log("Saving tweet from ")
+      console.log("Saving tweet from " + userEmail + newTweet)
 
     }).catch(err => {
       console.log(err);
@@ -92,6 +93,7 @@ exports.membertimeline = {
         reply.redirect('/');
       });
     }
+    //this if else sends admin to a slighty different view which has delete functions
     else {
       Tweet.find({author: member}).populate('author').then(allTweets => {
         reply.view('yours', {

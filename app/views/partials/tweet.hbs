@@ -6,13 +6,11 @@
           <div>
             <h3> What's going on?</h3>
             <div class="field">
-              <textarea class="tweet" name="body" maxlength="167" wrap="soft" overflow="auto">
-
-              </textarea>
-              <input id="date" name="date">
+              <textarea class="tweet" name="body" maxlength="140" wrap="soft" overflow="auto"></textarea>
+              <input id="date" name="date" type="hidden">
 
               <script type="text/javascript">
-                document.getElementById('date').value = new Date();
+                document.getElementById('date').value = new Date().getTime();
               </script>
 
               <span class="countdown"></span>
@@ -34,7 +32,7 @@
       <!-- https://stackoverflow.com/questions/2136647/character-countdown-like-on-twitter -->
       <script>
         function updateCountdown() {
-          let remaining = 167 - jQuery('.tweet').val().length;
+          let remaining = 140 - jQuery('.tweet').val().length;
           jQuery('.countdown').text(remaining + ' characters remaining.')
         }
         jQuery(document).ready(function($) {

@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const Tweet = require('../models/tweet');
 const User = require('../models/user');
 const Joi = require('joi');
@@ -83,13 +85,16 @@ exports.register = {
   handler: function (request, reply) {
     const user = new User(request.payload);
 
-    user.save().then(newUser => {
-      console.log("Registering...")
-      reply.redirect('/viewusers');
-    }).catch(err => {
-      reply.redirect('/');
-    });
-  },
+    const plaintextPassword = user.password;
+
+    bcrypt.hash(plaintextPassword, saltRounds, function(err, hash) {
+      user.password = hash;
+      return user.save().then(newUser => {
+        reply.redirect('/login');
+      }).catch(err => {
+        reply.redirect('/');
+      });
+    })}
 
 };
 

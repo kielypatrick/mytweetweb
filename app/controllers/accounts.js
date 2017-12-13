@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const User = require('../models/user');
 const Joi = require('joi');
 
@@ -43,13 +45,16 @@ exports.register = {
   handler: function (request, reply) {
     const user = new User(request.payload);
 
-    user.save().then(newUser => {
-      console.log("Registering...")
-      reply.redirect('/login');
-    }).catch(err => {
-      reply.redirect('/');
-    });
-  },
+    const plaintextPassword = user.password;
+
+    bcrypt.hash(plaintextPassword, saltRounds, function(err, hash) {
+      user.password = hash;
+      return user.save().then(newUser => {
+        reply.redirect('/login');
+      }).catch(err => {
+        reply.redirect('/');
+      });
+    })}
 
 };
 
@@ -62,7 +67,63 @@ exports.login = {
 };
 
 exports.authenticate = {
+
   auth: false,
+
+  validate: {
+
+    payload: {
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+
+    options: {
+      abortEarly: false,
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('login', {
+        title: 'Sign in error',
+        errors: error.data.details,
+      }).code(400);
+    },
+
+  },
+
+  handler: function (request, reply) {
+    const user = request.payload;
+    User.findOne({email: user.email}).then(foundUser => {
+      bcrypt.compare(user.password, foundUser.password, function (err, isValid) {
+        if (isValid) {
+          request.cookieAuth.set(
+              {
+                loggedIn: true,
+                loggedInUser: user.email,
+              });
+          if (user.email === 'marge@simpson.com') {
+            console.log("logging in admin " + user.email)
+            reply.redirect('/admin');
+          }
+          else {
+            reply.redirect('/home');
+          }
+        }
+        else
+        {
+          reply.redirect('/signup');
+        }
+
+      })
+    }).
+    catch(err => {
+      reply.redirect('/signup');
+    })
+  }
+};
+
+exports.authenticate = {
+  auth: false,
+
   handler: function (request, reply) {
     const user = request.payload;
     if (user.email === 'marge@simpson.com') {

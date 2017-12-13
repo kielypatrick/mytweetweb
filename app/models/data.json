@@ -5,19 +5,29 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "$2a$10$IPwgcHeB6MSPUgmxke9PCez5e1ikeaPmxifHMQr6ugwC8Pc7YeRmK"
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "$2a$10$Yo2nTVlVtdTriADRllLam.LM9zuT6yT/2lxs/rF2ov0YFFy7s1lKG"
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "$2a$10$kcGHbTZv4hndJ1CVUIOXK.lLSUmRFCjhWSahsAjLzOw/mk9v0WuY."
+    }
+  },
+
+  "tweets": {
+    "_model": "Tweet",
+    "one": {
+      "body": "Helllo everybody",
+      "date": "12343343252",
+      "author": "->users.homer"
+
     }
   }
 }

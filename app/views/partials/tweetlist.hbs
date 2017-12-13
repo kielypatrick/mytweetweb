@@ -18,7 +18,11 @@
             </td>
           </tr>
           <tr>
-            <td> {{date}} </td>
+            <td id="date"> {{date}} </td>
+
+            <script type="text/javascript">
+              document.getElementById('date').value = {{date}}.getTime();
+            </script>
 
 
 
