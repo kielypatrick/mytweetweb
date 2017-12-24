@@ -7,6 +7,8 @@ const userSchema = mongoose.Schema({
   lastName: String,
   email: String,
   password: String,
+  pipers: XMLList(User),
+  rats: XMLList(User),
   admin: String,
 });
 

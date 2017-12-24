@@ -4,6 +4,7 @@ const saltRounds = 10;
 const User = require('../models/user');
 const Joi = require('joi');
 
+
 exports.main = {
   auth: false,
   handler: function (request, reply) {
@@ -99,6 +100,7 @@ exports.authenticate = {
               {
                 loggedIn: true,
                 loggedInUser: user.email,
+
               });
           if (user.email === 'marge@simpson.com') {
             console.log("logging in admin " + user.email)
@@ -110,53 +112,21 @@ exports.authenticate = {
         }
         else
         {
+          console.log("logging probs " + user.email)
+
           reply.redirect('/signup');
         }
 
       })
     }).
     catch(err => {
+      console.log("logging problem" + user.email)
+
       reply.redirect('/signup');
     })
   }
 };
 
-exports.authenticate = {
-  auth: false,
-
-  handler: function (request, reply) {
-    const user = request.payload;
-    if (user.email === 'marge@simpson.com') {
-      request.cookieAuth.set({
-        loggedIn: true,
-        loggedInUser: user.email,
-      });
-      console.log("logging in admin " + user.email)
-
-      reply.redirect('/admin');
-    }
-    else
-      {
-        User.findOne({email: user.email}).then(foundUser => {
-          if (foundUser && foundUser.password === user.password) {
-            request.cookieAuth.set({
-              loggedIn: true,
-              loggedInUser: user.email,
-            });
-            console.log("logging in " + user.email)
-            reply.redirect('/home');
-          } else {
-            reply.redirect('/signup');
-          }
-        }).catch(err => {
-          console.log(err)
-          reply.redirect('/');
-        });
-      }
-    }
-
-
-};
 
 exports.settings = {
 

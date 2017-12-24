@@ -14,6 +14,8 @@ module.exports = [
   { method: 'POST', path: '/register', config: Accounts.register },
   { method: 'GET', path: '/settings', config: Accounts.settings },
   { method: 'POST', path: '/settingsupdate', config: Accounts.settingsUpdate },
+  //{ method: 'GET', path: '/piperlist', config: Accounts.piperList },
+
 
 
   { method: 'GET', path: '/admin', config: Admin.admin },
@@ -30,6 +32,12 @@ module.exports = [
   { method: 'GET', path: '/membertimeline/{authorId}', config: Tweets.membertimeline },
   { method: 'GET', path: '/tweets/{tweetId}/deleteTweet', config: Tweets.deleteTweet },
 
+  // {
+  //   method: 'GET', path: '/tweets/{tweetId}/deleteTweet',
+  //   handler: function (request, reply) {
+  //     reply('Click ' + '!  Go <a href="/login">here</a> to delete tweet ' + request.params.tweetId);
+  //   }
+  // },
 
 
   {
