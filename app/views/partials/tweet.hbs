@@ -2,7 +2,8 @@
   <div class="ui grid ">
     <div class="ui form  column">
       <div class="ui stacked segment">
-        <form action="/tweet" method="POST">
+        <form action="/tweet" method="POST" enctype="multipart/form-data">
+          <!--enctype="multipart/form-data" has to be included for image to display-->
           <div>
             <h3> What's going on?</h3>
             <div class="field">
@@ -15,10 +16,10 @@
 
               <span class="countdown"></span>
 
-
-
-
-              <p>  </p>
+              <div class="field">
+                <label>Image</label>
+                <input type="file" name="img">
+              </div>
             </div>
           </div>
 

@@ -4,7 +4,8 @@
   <div class="ui grid">
     <div class="ui ten wide column">
       <div class="ui stacked fluid form segment">
-        <form action="/settingsupdate" method="POST">
+        <form action="/settingsupdate" method="POST" enctype="multipart/form-data">
+          <!--enctype="multipart/form-data" has to be included for image to display-->
           <h3 class="ui header">Settings</h3>
           <div class="two fields">
             <div class="field">
@@ -21,8 +22,8 @@
             <input value="{{{user.email}}}" type="text" name="email">
           </div>
           <div class="field">
-            <label>Password</label>
-            <input value="{{user.password}}"type="password" name="password">
+            <label>Change Profile Pic</label>
+            <input type="file" name="profilePic">
           </div>
           <button class="ui blue submit button">Submit</button>
         </form>
@@ -30,7 +31,10 @@
       </div>
     </div>
     <aside class="ui five wide column">
-      <img src="images/sam.png" class="ui medium image">
+
+      <img class="ui medium image" src="/getProfilePic/{{user._id}}" />
+
+
     </aside>
   </div>
 </section>

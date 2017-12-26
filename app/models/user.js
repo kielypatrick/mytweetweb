@@ -7,9 +7,14 @@ const userSchema = mongoose.Schema({
   lastName: String,
   email: String,
   password: String,
-  pipers: XMLList(User),
-  rats: XMLList(User),
+  // pipers: XMLList(User),
+  // rats: XMLList(User),
   admin: String,
+
+  profilePic: {
+      data: Buffer,
+      contentType: String,
+      }
 });
 
 const User = mongoose.model('User', userSchema);

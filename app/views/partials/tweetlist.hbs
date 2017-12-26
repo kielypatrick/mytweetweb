@@ -7,16 +7,19 @@
 
       <table class="ui celled table segment" style="table-layout: fixed">
         <thead>
-          <h3>    <a href="/membertimeline/{{author.id}}"> {{author.firstName}} {{author.lastName}} </a>
+          <h3>    <a href="/membertimeline/{{author.id}}"> {{author.firstName}} {{author.lastName}}
+            <img class="ui tiny image" src="/getProfilePic/{{author.id}}" style="float: right;" /> </a>
 
           </h3>
         </thead>
         <tbody>
 
           <tr>
-            <td style="word-wrap: break-word"> {{body}}
+            <td style="word-wrap: break-word"> {{body}}            <img class="ui medium image" src="/getTweetImg/{{id}}" />
+
             </td>
           </tr>
+
           <tr>
             <td id="date"> {{date}} </td>
 
@@ -24,9 +27,8 @@
               document.getElementById('date').value = {{date}}.getTime();
             </script>
 
-
-
           </tr>
+
 
 
         {{/each}}

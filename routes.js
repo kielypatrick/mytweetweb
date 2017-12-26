@@ -14,6 +14,9 @@ module.exports = [
   { method: 'POST', path: '/register', config: Accounts.register },
   { method: 'GET', path: '/settings', config: Accounts.settings },
   { method: 'POST', path: '/settingsupdate', config: Accounts.settingsUpdate },
+  { method: 'GET',    path: '/getProfilePic/{authorId}', config: Accounts.getProfilePic1 },
+
+
   //{ method: 'GET', path: '/piperlist', config: Accounts.piperList },
 
 
@@ -29,6 +32,8 @@ module.exports = [
   { method: 'GET', path: '/mine', config: Tweets.mine },
 
   { method: 'POST', path: '/tweet', config: Tweets.tweet },
+  { method: 'GET',    path: '/getTweetImg/{_id}', config: Tweets.getTweetImg },
+
   { method: 'GET', path: '/membertimeline/{authorId}', config: Tweets.membertimeline },
   { method: 'GET', path: '/tweets/{tweetId}/deleteTweet', config: Tweets.deleteTweet },
 

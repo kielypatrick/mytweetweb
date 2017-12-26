@@ -39,6 +39,8 @@ exports.tweet = {
 
       body: Joi.string().min(2).required(),
       date: Joi.string().required(),
+      img: Joi.allow(null),
+
     },
 
     failAction: function (request, reply, source, error) {
@@ -51,11 +53,16 @@ exports.tweet = {
   },
 
   handler: function (request, reply) {
-    var userEmail = request.auth.credentials.loggedInUser;
+    const userEmail = request.auth.credentials.loggedInUser;
+    const tweetImg = request.payload.img
     User.findOne({ email: userEmail }).then(user => {
       let data = request.payload;
       const tweet = new Tweet(data);
       tweet.author = user._id;
+      if(tweetImg.length) { //look for image
+        tweet.img.data = tweetImg;
+       // tweet.img.contentType = 'image/png';
+      }
       return tweet.save();
     }).then(newTweet => {
       if (userEmail === 'marge@simpson.com'){
@@ -169,5 +176,19 @@ exports.mine = {
 
 };
 
+exports.getTweetImg = {
+  handler: function (req, res) {
+    const tweetId = req.params._id;
+    console.log("Show params " + tweetId)
 
+    Tweet.findOne({_id: tweetId})
+        .exec((err, foundTweet) => {
+          if (foundTweet.img.data)
+          {
+            res(foundTweet.img.data).type('image');
+            console.log("Show image with " + foundTweet.body)
 
+          }
+        });
+  },
+};

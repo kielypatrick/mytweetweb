@@ -4,7 +4,8 @@
   <div class="ui grid">
     <div class="ui ten wide column">
       <div class="ui stacked fluid form segment">
-        <form action="/register" method="POST">
+        <form action="/register" method="POST" enctype="multipart/form-data">
+          <!--enctype="multipart/form-data" has to be included for image to display-->>
           <h3 class="ui header">Register</h3>
           <div class="two fields">
             <div class="field">
@@ -23,6 +24,10 @@
           <div class="field">
             <label>Password</label>
             <input type="password" name="password" value="secret">
+          </div>
+          <div class="field">
+            <label>Choose Profile Pic</label>
+            <input type="file" name="profilePic">
           </div>
           <button class="ui blue submit button">Submit</button>
         </form>

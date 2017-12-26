@@ -30,6 +30,8 @@ exports.register = {
       lastName: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+      profilePic: Joi.allow(null),
+
     },
 
     failAction: function (request, reply, source, error) {
@@ -45,11 +47,17 @@ exports.register = {
   },
   handler: function (request, reply) {
     const user = new User(request.payload);
+    const profilePic = request.payload.profilePic;
 
     const plaintextPassword = user.password;
 
     bcrypt.hash(plaintextPassword, saltRounds, function(err, hash) {
       user.password = hash;
+      if(profilePic.length) { //look for image
+        user.profilePic.data = profilePic;
+      }
+
+      console.log("saving new user " + user.email)
       return user.save().then(newUser => {
         reply.redirect('/login');
       }).catch(err => {
@@ -151,7 +159,7 @@ exports.settingsUpdate = {
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
       email: Joi.string().email().required(),
-      password: Joi.string().required(),
+      profilePic: Joi.allow(null),
     },
 
     failAction: function (request, reply, source, error) {
@@ -175,13 +183,21 @@ exports.settingsUpdate = {
   handler: function (request, reply) {
     const editedUser = request.payload;
     const loggedInUserEmail = request.auth.credentials.loggedInUser;
+    const profilePic = request.payload.profilePic
+
 
     User.findOne({ email: loggedInUserEmail }).then(user => {
       user.firstName = editedUser.firstName;
       user.lastName = editedUser.lastName;
       user.email = editedUser.email;
-      user.password = editedUser.password;
+      if(profilePic.length) { //look for image
+        user.profilePic.data = profilePic;
+      }
+      console.log("saving changes for " + user.email)
+
       return user.save();
+
+
     }).then(user => {
       reply.view('settings', { title: 'Edit Account Settings', user: user });
     }).catch(err => {
@@ -189,6 +205,23 @@ exports.settingsUpdate = {
     });
   },
 
+};
+
+
+
+exports.getProfilePic1 = {
+  handler: function (req, res) {
+    const userId = req.params.authorId;
+    console.log("Show params " + userId)
+
+    User.findOne({_id: userId}).then(foundUser =>  {
+
+      res(foundUser.profilePic.data).type('image');
+      console.log("Show image with " + foundUser.email)
+
+
+    });
+  },
 };
 
 exports.logout = {
