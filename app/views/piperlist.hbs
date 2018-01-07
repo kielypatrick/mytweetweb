@@ -1,0 +1,39 @@
+{{> mainmenu _id="none" }}
+
+
+<section class="ui stacked segment">
+  <div class="ui grid">
+    <div class="four wide column">
+
+    {{> followerbuttons }}
+
+
+      {{#each following}}
+        <table class="ui celled table segment" style="table-layout: fixed">
+          <thead>
+          <tr>
+            ...
+          </tr>
+          </thead>
+        <tbody>
+
+        <tr>
+          <h3>    <a href="/membertimeline/{{id}}"> {{firstName}} {{lastName}}
+            {{#if profilePic.data}}
+              <img class="ui tiny image" src="/getProfilePic/{{id}}" style="float: right;" /> </a>
+            {{/if}}
+          </h3>{{/each}}
+
+
+
+      </tr>
+
+      </tbody>
+      </table>
+    </div>
+
+      <div class="ui eight wide column" style="float: right;">
+        {{> tweetlist }}
+      </div>
+  </div>
+</section>

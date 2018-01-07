@@ -106,3 +106,27 @@ exports.deleteOne = {
   },
 
 };
+
+exports.followUser = {
+
+  auth: false,
+
+  handler: function (request, reply) {
+
+    let loggedInUser = request.params.id;
+    const memberId = request.payload;
+    User.findOne({email: loggedInUser}).then(currentUser => {
+      User.findOne({_id: memberId}).then(foundUser => {
+        currentUser.following.push(foundUser._id);
+        foundUser.followers.push(currentUser._id);
+        currentUser.save();
+        foundUser.save();
+        console.log(loggedInUser + " is now following " + memberId);
+
+        reply(User).code(204);
+      }).catch(err => {
+        reply(Boom.notFound('id not found'));
+      });
+    });
+  },
+}

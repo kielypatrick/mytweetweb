@@ -16,22 +16,17 @@
     <tr>
       <td style="word-wrap: break-word"> {{body}}
         <button class="ui red icon button" id="tweet{{tweetid}}" style="float: right;" onclick="window.location='/tweets/{{id}}/deleteTweet'"><i class="trash icon"></i></button>
+        {{#if img.data}}
+          <img class="ui medium image" src="/getTweetImg/{{id}}" />
+        {{/if}}
       </td>
     </tr>
-    <tr>
-      <p><img class="ui medium image" src="/getTweetImg/{{id}}" />
-      </p>
-    </tr>
+
     <tr>
       <td> {{date}} </td>
-
-
-
     </tr>
 
-
     {{/each}}
-
 
   </tbody>
 

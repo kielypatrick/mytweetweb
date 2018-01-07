@@ -1,0 +1,17 @@
+  <h1>{{member.firstName}} {{member.lastName}}</h1>
+
+  {{#if member.profilePic.data}}
+    <img class="ui large image" src="/getProfilePic/{{member._id}}"/>
+  {{/if}}
+
+  <button class="ui blue button" style="float: left;"
+          onclick="window.location='/piperlist/{{member._id}}'">Pipers: {{totalFollowing}}</button>
+  <button class="ui blue button"  style="float: left;"
+          onclick="window.location='/ratlist/{{member._id}}'">Rats: {{totalFollowers}}</button>
+
+  <button class="ui red button" style="float: right;"
+          onclick="window.location='/unfollowuser/{{member._id}}'">Unfollow</button>
+
+  <button class="ui green button" style="float: right;"
+          onclick="window.location='/followuser/{{member._id}}'">Follow</button>
+

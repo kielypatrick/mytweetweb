@@ -1,6 +1,8 @@
 'use strict';
 
 const Hapi = require('hapi');
+const Handlebars = require('handlebars');
+
 
 var server = new Hapi.Server();
 // const fs = require('fs');
@@ -34,6 +36,22 @@ server.register([require('inert'), require('vision'), require('hapi-auth-cookie'
     layout: true,
     isCached: false,
   });
+
+  // Handlebars.registerHelper("contains", function( value, array, options ){
+  //   // fallback...
+  //
+  //   array = ( array instanceof Array ) ? array : [array];
+  //   return (array.indexOf(value) > 0) ? options.fn( this ) : "";
+  //
+  // });
+  //
+  // Handlebars.registerHelper("excludes", function(elem, options) {
+  //   const list instanceof Array();
+  //   if(list.indexOf(elem) > -1) {
+  //     return options.fn(this);
+  //   }
+  //   return options.inverse(this);
+  // });
 
   server.auth.strategy('standard', 'cookie', {
     password: 'secretpasswordnotrevealedtoanyone',

@@ -57,7 +57,7 @@ exports.register = {
         user.profilePic.data = profilePic;
       }
 
-      console.log("saving new user " + user.email)
+      console.log("saving new user " + user.email + user.password)
       return user.save().then(newUser => {
         reply.redirect('/login');
       }).catch(err => {
@@ -212,17 +212,20 @@ exports.settingsUpdate = {
 exports.getProfilePic1 = {
   handler: function (req, res) {
     const userId = req.params.authorId;
-    console.log("Show params " + userId)
+   // console.log("Show params " + userId)
 
     User.findOne({_id: userId}).then(foundUser =>  {
+      if (foundUser.profilePic.data) {
 
-      res(foundUser.profilePic.data).type('image');
-      console.log("Show image with " + foundUser.email)
+        res(foundUser.profilePic.data).type('image');
+        console.log("Show image with " + foundUser.email)
+      }
 
 
     });
   },
 };
+
 
 exports.logout = {
   auth: false,

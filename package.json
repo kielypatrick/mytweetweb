@@ -1,5 +1,5 @@
 {
-  "name": "mytweetweb",
+    "name": "mytweetweb",
   "version": "1.0.0",
   "description": "a web based app to allow users to post tweets",
   "main": "index.js",
@@ -13,6 +13,7 @@
     "boom": "^7.1.1",
     "handlebars": "^4.0.10",
     "handlebars-dateformat": "^1.1.1",
+    "handlebars-helpers": "^0.10.0",
     "hapi": "^16.6.2",
     "hapi-auth-basic": "^5.0.0",
     "hapi-auth-cookie": "^7.0.0",

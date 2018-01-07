@@ -30,6 +30,19 @@ exports.findOne = {
 
 }
 
+exports.findUserTweets = {
+
+  auth: false,
+
+  handler: function (request, reply) {
+    Tweet.find({ author: request.params.id }).exec().then(tweets => {
+      reply(tweets);
+    }).catch(err => {
+      reply(Boom.notFound('id not found'));
+    });
+  },
+}
+
 exports.createTweet = {
 
   auth: false,
@@ -38,6 +51,8 @@ exports.createTweet = {
     const tweet = new Tweet(request.payload);
     tweet.save().then(newTweet => {
       reply(newTweet).code(201);
+      console.log("Tweeting..");
+
     }).catch(err => {
       reply(Boom.badImplementation('error tweet'));
     });

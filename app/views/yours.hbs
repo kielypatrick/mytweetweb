@@ -1,12 +1,10 @@
-{{> mainmenu _id="report" }}
+{{> mainmenu _id="none" }}
 
 
 <section class="ui stacked segment">
   <div class="ui grid">
-    <aside class="six wide column">
-      {{> tweet }}
-    </aside>
-    <div class="ui ten wide column">
+      {{> followerbuttons }}
+    <div class="ui ten wide column" style="float: right;">
       {{> tweetlist }}
     </div>
   </div>

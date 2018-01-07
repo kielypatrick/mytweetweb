@@ -8,14 +8,19 @@
       <table class="ui celled table segment" style="table-layout: fixed">
         <thead>
           <h3>    <a href="/membertimeline/{{author.id}}"> {{author.firstName}} {{author.lastName}}
+          {{#if author.profilePic.data}}
             <img class="ui tiny image" src="/getProfilePic/{{author.id}}" style="float: right;" /> </a>
+          {{/if}}
 
           </h3>
         </thead>
         <tbody>
 
           <tr>
-            <td style="word-wrap: break-word"> {{body}}            <img class="ui medium image" src="/getTweetImg/{{id}}" />
+            <td style="word-wrap: break-word"> {{body}}
+              {{#if img.data}}
+              <img class="ui medium image" src="/getTweetImg/{{id}}" />
+              {{/if}}
 
             </td>
           </tr>
@@ -29,10 +34,7 @@
 
           </tr>
 
-
-
         {{/each}}
-
 
         </tbody>
         

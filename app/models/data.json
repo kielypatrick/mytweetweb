@@ -18,6 +18,12 @@
       "lastName": "Simpson",
       "email": "bart@simpson.com",
       "password": "$2a$10$kcGHbTZv4hndJ1CVUIOXK.lLSUmRFCjhWSahsAjLzOw/mk9v0WuY."
+    },
+    "lisa": {
+      "firstName": "Lisa",
+      "lastName": "Simpson",
+      "email": "lisa@simpson.com",
+      "password": "$2a$10$U2wCWuQ7MwtGNveH7cngv.9G.bRlOkTB178.5yR0zuusMUk0TDwUC"
     }
   },
 
@@ -27,7 +33,11 @@
       "body": "Helllo everybody",
       "date": "12343343252",
       "author": "->users.homer"
-
+    },
+    "two": {
+      "body": "So'd your ma",
+      "date": "123433432222",
+      "author": "->users.bart"
     }
   }
 }

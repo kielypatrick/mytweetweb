@@ -9,6 +9,9 @@ module.exports = [
   { method: 'DELETE', path: '/api/tweets', config: TweetsApi.deleteAllTweets},
   { method: 'DELETE', path: '/api/tweets/{id}', config: TweetsApi.deleteTweet},
 
+  { method: 'GET', path: '/api/users/{id}/tweets', config: TweetsApi.findUserTweets },
+  { method: 'POST', path: '/api/followuser/{id}', config: UsersApi.followUser },
+
 
 
   { method: 'GET', path: '/api/users', config: UsersApi.find },

@@ -4,15 +4,8 @@
 <section class="ui stacked segment">
   <div class="ui grid">
 
-    <aside class="six wide column">
-      <button class="ui blue button" style="float: left;"
-              onclick="window.location='/piperlist/{{id}}/'">Pipers</button>
-      <button class="ui blue button"  style="float: left;"
-              onclick="window.location='/ratlist/{{id}}/'">Rats</button>
-      <button class="ui green button" style="float: right;"
-              onclick="window.location='/users/{{id}}/'">Follow</button>
+    {{> followerbuttons }}
 
-    </aside>
     <div class="ui ten wide column">
       {{> mytweetlist }}
     </div>

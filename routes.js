@@ -29,6 +29,8 @@ module.exports = [
 
   { method: 'GET', path: '/home', config: Tweets.newsfeed },
   { method: 'GET', path: '/newsfeed', config: Tweets.newsfeed },
+  { method: 'GET', path: '/global', config: Tweets.worldWideTweets },
+
   { method: 'GET', path: '/mine', config: Tweets.mine },
 
   { method: 'POST', path: '/tweet', config: Tweets.tweet },
@@ -36,6 +38,13 @@ module.exports = [
 
   { method: 'GET', path: '/membertimeline/{authorId}', config: Tweets.membertimeline },
   { method: 'GET', path: '/tweets/{tweetId}/deleteTweet', config: Tweets.deleteTweet },
+
+  { method: 'GET', path: '/followuser/{member}', config: Tweets.followUser },
+  { method: 'GET', path: '/unfollowuser/{id}', config: Tweets.unfollowUser },
+
+  { method: 'GET', path: '/piperlist/{member}', config: Tweets.piperList },
+  { method: 'GET', path: '/ratlist/{member}', config: Tweets.ratList },
+
 
   // {
   //   method: 'GET', path: '/tweets/{tweetId}/deleteTweet',
